@@ -4,14 +4,20 @@ class_name PlayerManager
 
 signal player_added(player, player_num)
 
+export var max_players = 4
+
 var players = []
 
 func _is_join_event(event: InputEvent) -> bool:
 	return event.is_action_pressed("ui_accept")
 
 
+func _is_max_players() -> bool:
+	return players.size() >= max_players
+
+
 func add_player(event: InputEvent) -> void:
-	if not _is_join_event(event): return
+	if not _is_join_event(event) or _is_max_players(): return
 	
 	var data = {
 		"device": event.device,

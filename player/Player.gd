@@ -11,10 +11,15 @@ export var angular_drag_factor := 0.1
 var velocity := Vector2.ZERO
 var angular_velocity := 0.0
 
-onready var input := $PlayerInput
+var input: PlayerInput setget _set_input
+
+func _set_input(i: PlayerInput) -> void:
+	add_child(i)
+	input = i
 
 
 func _physics_process(delta: float) -> void:
+	print(_get_movement())
 	velocity = velocity.clamped(speed_max)
 
 	angular_velocity = clamp(angular_velocity, -angular_speed_max, angular_speed_max)

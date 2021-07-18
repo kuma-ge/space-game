@@ -18,3 +18,11 @@ func test_add_players():
 	
 	manager.add_player(joypad_button_event(JOY_SONY_X))
 	assert_signal_emit_count(manager, "player_added", 2)
+
+func test_add_max_players():
+	manager.max_players = 1
+	manager.add_player(press_key("ui_accept"))
+	assert_signal_emit_count(manager, "player_added", 1)
+	
+	manager.add_player(joypad_button_event(JOY_SONY_X))
+	assert_signal_emit_count(manager, "player_added", 1)

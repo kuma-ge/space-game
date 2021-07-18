@@ -18,7 +18,7 @@ func _ready():
 	_open_menu(main)
 
 
-func _input(event):
+func _unhandled_input(event):
 	if event.is_action("ui_cancel"):
 		_back_menu()
 
