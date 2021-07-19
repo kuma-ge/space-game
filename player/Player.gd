@@ -8,6 +8,8 @@ export var angular_acceleration := deg2rad(1200)
 export var drag_factor := 0.05
 export var angular_drag_factor := 0.1
 
+onready var bullet_spawner := $BulletSpawner
+
 var velocity := Vector2.ZERO
 var angular_velocity := 0.0
 
@@ -19,7 +21,8 @@ func _set_input(i: PlayerInput) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	print(_get_movement())
+	bullet_spawner.spawn = input.is_pressed("fire")
+	
 	velocity = velocity.clamped(speed_max)
 
 	angular_velocity = clamp(angular_velocity, -angular_speed_max, angular_speed_max)

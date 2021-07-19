@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
+[ext_resource path="res://addons/shared/misc/Spawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player/ship_A.png" type="Texture" id=3]
+[ext_resource path="res://player/bullet/Bullet.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -15,3 +17,8 @@ texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="BulletSpawner" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, -23.6934 )
+scene = [ ExtResource( 4 ) ]
+spawn_delay = 0.5

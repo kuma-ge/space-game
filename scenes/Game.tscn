@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://addons/camera/CameraAll2D.gd" type="Script" id=1]
+[ext_resource path="res://addons/shared/camera/CameraAll2D.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Game.gd" type="Script" id=2]
-[ext_resource path="res://addons/input/PlayerManager.gd" type="Script" id=3]
+[ext_resource path="res://addons/shared/input/PlayerManager.gd" type="Script" id=3]
 
 [node name="Game" type="Node"]
 script = ExtResource( 2 )

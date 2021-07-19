@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/selection/CharacterSelection.gd" type="Script" id=1]
-[ext_resource path="res://addons/focus/FocusContainer.gd" type="Script" id=2]
+[ext_resource path="res://addons/shared/focus/FocusContainer.gd" type="Script" id=2]
 [ext_resource path="res://scenes/selection/gamepad.png" type="Texture" id=3]
 
 [node name="CharacterSelection" type="CenterContainer"]
