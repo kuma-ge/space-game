@@ -1,5 +1,7 @@
 extends Control
 
+class_name PlayerSelection
+
 signal start_game
 
 onready var selection_container := $VBoxContainer/GridContainer

@@ -1,19 +1,20 @@
-extends CanvasLayer
+extends Control
+
+class_name MainMenu
 
 signal start_game
 
-onready var menu_panel := $Panel
-onready var main := $Panel/Main
-onready var options := $Panel/Options
+onready var main := $Main
+onready var options := $Options
 
-onready var start_btn = $Panel/Main/VBoxContainer/Start
+onready var start_btn = $Main/VBoxContainer/Start
 
 const menu_stack = []
 var current_menu setget _set_current_menu
 
 
 func _ready():
-	for child in menu_panel.get_children():
+	for child in get_children():
 		child.hide()
 	_open_menu(main)
 
@@ -44,7 +45,7 @@ func _back_menu():
 
 func _on_Start_pressed():
 	emit_signal("start_game")
-	menu_panel.hide()
+	hide()
 
 
 func _on_Options_pressed():
