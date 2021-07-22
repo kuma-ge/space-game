@@ -66,14 +66,17 @@ func _spawn_all():
 
 
 func _spawn(spawn_pos: Node2D):
-	var scene = _get_random_scene()
-	if not scene: return
-	
-	var instance = scene.instance()
+	var instance = _instance_scene()
 	get_tree().current_scene.add_child(instance)
 	instance.global_transform = spawn_pos.global_transform
 	instance.global_rotation = spawn_pos.global_rotation
+	return instance
 
+func _instance_scene():
+	var scene = _get_random_scene()
+	if not scene: return
+	
+	return scene.instance()
 
 func _on_Timer_timeout():
 	_can_spawn = true

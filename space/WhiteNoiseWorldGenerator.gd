@@ -54,7 +54,7 @@ func _generate_sector(x_id: int, y_id: int) -> void:
 		# We generate a random position for each asteroid within the rectangle's bounds.
 		asteroid.position = _generate_random_position(x_id, y_id)
 		asteroid.rotation = _rng.randf_range(-PI, PI)
-		asteroid.scale *= _rng.randf_range(0.2, 1.0)
+		asteroid.scale *= _rng.randf_range(0.4, 1.0)
 		sector_data.append(asteroid)
 
 	# We store references to all asteroids to free them later.

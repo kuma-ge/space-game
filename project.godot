@@ -156,6 +156,10 @@ config/name="Space Game"
 run/main_scene="res://scenes/Game.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/stretch/aspect="keep"
+
 [input]
 
 move_down={
@@ -199,6 +203,8 @@ fire={
 
 2d_physics/layer_1="objects"
 2d_physics/layer_2="player"
+2d_physics/layer_3="player_hurtbox"
+2d_physics/layer_4="enemy_hurtbox"
 
 [physics]
 

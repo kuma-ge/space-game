@@ -1,11 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
-[ext_resource path="res://addons/shared/misc/Spawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/shared/misc/HitBoxSpawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player/ship_A.png" type="Texture" id=3]
-[ext_resource path="res://player/bullet/Bullet.tscn" type="PackedScene" id=4]
+[ext_resource path="res://player/Bullet.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/shared/combat/Health.gd" type="Script" id=5]
+[ext_resource path="res://addons/shared/combat/HurtBox.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 13.0491
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2147483650
@@ -17,7 +22,25 @@ texture = ExtResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
+[node name="Health" type="Node" parent="."]
+script = ExtResource( 5 )
+max_health = 3
+
+[node name="HurtBox" parent="." instance=ExtResource( 6 )]
+invincibility = false
+
+[node name="InvincibilityTimer" parent="HurtBox" index="0"]
+wait_time = 0.5
+
+[node name="CollisionShape2D" parent="HurtBox" index="1"]
+shape = SubResource( 2 )
+
 [node name="BulletSpawner" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, -23.6934 )
 scene = [ ExtResource( 4 ) ]
 spawn_delay = 0.5
+ignore_node_path = NodePath("../HurtBox")
+
+[connection signal="zero_health" from="Health" to="." method="_on_Health_zero_health"]
+[connection signal="damaged" from="HurtBox" to="." method="_on_HurtBox_damaged"]
+
+[editable path="HurtBox"]

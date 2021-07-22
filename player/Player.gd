@@ -9,6 +9,9 @@ export var drag_factor := 0.05
 export var angular_drag_factor := 0.1
 
 onready var bullet_spawner := $BulletSpawner
+onready var health := $Health
+
+const hit_effect = preload("res://player/hiteffect/HitEffect.tscn")
 
 var velocity := Vector2.ZERO
 var angular_velocity := 0.0
@@ -47,3 +50,13 @@ func _get_movement() -> Vector2:
 		input.get_action_strength("move_right") - input.get_action_strength("move_left"),
 		input.get_action_strength("move_up") - input.get_action_strength("move_down")
 	)
+
+
+func _on_HurtBox_damaged(dmg):
+	health.reduce(dmg)
+	var hit = hit_effect.instance()
+	add_child(hit)
+
+
+func _on_Health_zero_health():
+	queue_free()

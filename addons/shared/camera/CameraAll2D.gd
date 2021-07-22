@@ -14,7 +14,8 @@ func _process(delta):
 	_calculate_center()
 	global_position = center
 	
-#	if zoom_out:
+	if zoom_out:
+		print("zoom")
 #		zoom += Vector2(zoom_speed, zoom_speed)
 
 func _calculate_center() -> void:

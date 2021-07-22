@@ -2,8 +2,6 @@ extends Node
 
 onready var player_manager := $PlayerManager
 onready var gui := $GUI
-onready var camera := $Camera2D
-onready var space := $Space
 
 const player_scene = preload("res://player/Player.tscn")
 
@@ -19,5 +17,3 @@ func _start_game():
 		var player_node = player_scene.instance()
 		add_child(player_node)
 		player_node.input = player_manager.create_input(player)
-		camera.add_track_node(player_node)
-		space.add_player(player_node)
