@@ -7,9 +7,11 @@ export var angular_speed_max := deg2rad(150)
 export var angular_acceleration := deg2rad(1200)
 export var drag_factor := 0.05
 export var angular_drag_factor := 0.1
+export var speed_boost := 1.5
 
 onready var bullet_spawner := $BulletSpawner
 onready var health := $Health
+onready var boost := $boost
 
 const hit_effect = preload("res://player/hiteffect/HitEffect.tscn")
 
@@ -26,7 +28,11 @@ func _set_input(i: PlayerInput) -> void:
 func _physics_process(delta: float) -> void:
 	bullet_spawner.spawn = input.is_pressed("fire")
 	
-	velocity = velocity.clamped(speed_max)
+	var speed = speed_max
+	if input.is_pressed("boost"):
+		speed *= speed_boost
+	velocity = velocity.clamped(speed)
+	boost.visible = input.is_pressed("boost") and velocity.length() > 1
 
 	angular_velocity = clamp(angular_velocity, -angular_speed_max, angular_speed_max)
 	angular_velocity = lerp(angular_velocity, 0, angular_drag_factor)
