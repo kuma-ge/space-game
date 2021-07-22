@@ -17,6 +17,7 @@ func add_player(player) -> void:
 # the grid drawer, which needs to know the sector size and the number of sector
 # we generate on each axis.
 func _ready() -> void:
+	_rng.randomize()
 	generate()
 
 
@@ -41,7 +42,7 @@ func _physics_process(_delta: float) -> void:
 # Generates asteroids and places them inside
 # of the sector's bounds with a random position, rotation, and scale.
 func _generate_sector(x_id: int, y_id: int) -> void:
-	_rng.seed = make_seed_for(x_id, y_id)
+#	_rng.seed = make_seed_for(x_id, y_id)
 
 	# List of entities generated in this sector.
 	var sector_data := []
@@ -59,6 +60,15 @@ func _generate_sector(x_id: int, y_id: int) -> void:
 
 	# We store references to all asteroids to free them later.
 	_sectors[Vector2(x_id, y_id)] = sector_data
+
+
+func is_occupied(global_pos: Vector2, size = 3) -> bool:
+	var data = _sectors[_current_sector]
+	for asteroid in data:
+		var boundary = Rect2(asteroid.global_position, Vector2(size, size))
+		if boundary.has_point(global_pos):
+			return true
+	return false
 
 
 # Returns a random position within the sector's bounds, given the sector's coordinates.
