@@ -6,6 +6,9 @@ onready var space := $Space
 
 var _player_spawned = 0
 
+func _create_wall() -> void:
+	pass
+
 func start_game(player_manager):
 	for player in player_manager.players:
 		var player_node = player_scene.instance()
