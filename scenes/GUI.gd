@@ -5,6 +5,7 @@ class_name GUI
 const main_menu = preload("res://scenes/menu/MainMenu.tscn")
 const selection_scene = preload("res://scenes/selection/PlayerSelection.tscn")
 const pause_menu = preload("res://scenes/pause/PauseMenu.tscn")
+const game_over_menu = preload("res://scenes/gameover/GameOver.tscn")
 
 var active: Node
 
@@ -36,6 +37,12 @@ func show_pause_menu():
 	if Globals.game_started and not get_tree().paused:
 		get_tree().paused = true
 		var pause = _show_scene(pause_menu) as PauseMenu
+
+
+func show_game_over():
+	get_tree().paused = true
+	Globals.game_started = false
+	_show_scene(game_over_menu)
 
 
 func hide_active(hide_bg = true) -> void:

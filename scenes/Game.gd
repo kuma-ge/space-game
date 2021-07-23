@@ -11,6 +11,12 @@ func _ready():
 func _start_game():
 	active_game = death_match_scene.instance()
 	add_child(active_game)
+	active_game.connect("game_ended", self, "_game_over")
+
+
+func _game_over():
+	Gui.show_game_over()
+
 
 func _main_menu():
 	if active_game:

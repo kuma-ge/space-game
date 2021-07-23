@@ -54,10 +54,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/shared/misc/MoveDirection2D.gd"
 }, {
-"base": "Control",
+"base": "PausedMenu",
 "class": "PauseMenu",
 "language": "GDScript",
 "path": "res://scenes/pause/PauseMenu.gd"
+}, {
+"base": "Control",
+"class": "PausedMenu",
+"language": "GDScript",
+"path": "res://addons/shared/menu/PausedMenu.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -140,6 +145,7 @@ _global_script_class_icons={
 "MainMenu": "",
 "MoveDirection2D": "",
 "PauseMenu": "",
+"PausedMenu": "",
 "Player": "",
 "PlayerFocus": "",
 "PlayerInput": "",

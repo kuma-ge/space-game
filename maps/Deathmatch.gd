@@ -1,10 +1,19 @@
 extends Node2D
 
+signal game_ended()
+
 const player_scene = preload("res://player/Player.tscn")
 
 onready var space := $Space
 
 var _player_spawned = 0
+
+func _player_killed() -> void:
+	_player_spawned -= 1
+	
+	if _player_spawned == 1:
+		emit_signal("game_ended")
+
 
 func _ready():
 	var player_manager = Globals.player_manager
@@ -14,6 +23,7 @@ func _ready():
 		var pos = _get_next_position()
 		player_node.global_position = pos
 		player_node.input = player_manager.create_input(player)
+		player_node.connect("died", self, "_player_killed")
 		_player_spawned += 1
 
 func _get_next_position() -> Vector2:

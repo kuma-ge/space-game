@@ -5,6 +5,8 @@ class_name PlayerSelection
 signal start_game
 signal back
 
+export var min_players = 2
+
 onready var selection_container := $VBoxContainer/GridContainer
 onready var start_btn := $VBoxContainer/Start
 
@@ -47,7 +49,7 @@ func _all_players_ready() -> bool:
 
 
 func _on_Start_pressed():
-	if not _all_players_ready(): return
+	if not _all_players_ready() or player_manager.players.size() < min_players: return
 	
 	emit_signal("start_game")
 	queue_free()

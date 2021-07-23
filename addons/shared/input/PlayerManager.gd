@@ -34,11 +34,15 @@ func add_player(event: InputEvent) -> void:
 
 
 func player_exists(player_data: Dictionary) -> bool:
-	for input in players:
-		if input["device"] == player_data["device"] and \
-			input["joypad"] == player_data["joypad"]:
-			return true
-	return false
+	return find_player_index(player_data) != -1
+
+func find_player_index(player: Dictionary) -> int:
+	for i in range(0, players.size()):
+		var input = players[i]
+		if input["device"] == player["device"] and \
+			input["joypad"] == player["joypad"]:
+			return i
+	return -1
 
 
 func reset_players() -> void:

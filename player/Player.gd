@@ -1,6 +1,8 @@
 class_name Player
 extends KinematicBody2D
 
+signal died
+
 export var speed_max := 675.0
 export var acceleration := 1500.0
 export var angular_speed_max := deg2rad(150)
@@ -64,4 +66,5 @@ func _on_HurtBox_damaged(dmg):
 
 
 func _on_Health_zero_health():
+	emit_signal("died")
 	queue_free()
