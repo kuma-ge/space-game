@@ -6,7 +6,7 @@
 [ext_resource path="res://player/Bullet.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/shared/combat/Health.gd" type="Script" id=5]
 [ext_resource path="res://addons/shared/combat/HurtBox.tscn" type="PackedScene" id=6]
-[ext_resource path="res://player/effect_purple.png" type="Texture" id=7]
+[ext_resource path="res://player/effect_yellow.png" type="Texture" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -18,7 +18,6 @@ collision_layer = 2147483650
 script = ExtResource( 1 )
 
 [node name="boost" type="Sprite" parent="."]
-visible = false
 position = Vector2( 0, 16.4217 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 7 )

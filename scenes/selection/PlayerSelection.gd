@@ -9,7 +9,7 @@ onready var start_btn := $VBoxContainer/Start
 
 const selection_scene = preload("res://scenes/selection/CharacterSelection.tscn")
 
-var player_manager: PlayerManager
+onready var player_manager := Globals.player_manager
 
 func _ready():
 	player_manager.connect("player_added", self, "_add_player_selection")

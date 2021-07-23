@@ -1,15 +1,17 @@
 extends Node
 
-onready var player_manager := $PlayerManager
-onready var gui := $GUI
-onready var death_match := $Deathmatch
+const death_match_scene = preload("res://maps/Deathmatch.tscn")
+
+var active_game
 
 func _ready():
-	gui.show_main_menu().connect("start_game", self, "_start_player_select")
-	
-func _start_player_select():
-	gui.show_player_selection(player_manager).connect("start_game", self, "_start_game")
+	Events.connect("game_started", self, "_start_game")
+	Events.connect("main_menu", self, "_main_menu")
 
 func _start_game():
-	gui.hide_active()
-	death_match.start_game(player_manager)
+	active_game = death_match_scene.instance()
+	add_child(active_game)
+
+func _main_menu():
+	if active_game:
+		active_game.queue_free()
