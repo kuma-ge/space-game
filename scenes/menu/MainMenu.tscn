@@ -15,7 +15,6 @@ __meta__ = {
 visible = false
 margin_right = 1024.0
 margin_bottom = 600.0
-script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -25,6 +24,7 @@ margin_left = 465.0
 margin_top = 278.0
 margin_right = 559.0
 margin_bottom = 322.0
+script = ExtResource( 2 )
 
 [node name="Start" type="Button" parent="Main/VBoxContainer"]
 margin_right = 94.0
@@ -42,9 +42,9 @@ __meta__ = {
 }
 
 [node name="Exit" type="Button" parent="Main/VBoxContainer"]
-margin_top = 48.0
+margin_top = 24.0
 margin_right = 94.0
-margin_bottom = 68.0
+margin_bottom = 44.0
 text = "EXIT_GAME"
 __meta__ = {
 "_edit_use_anchors_": false

@@ -15,3 +15,4 @@ func _start_game():
 func _main_menu():
 	if active_game:
 		active_game.queue_free()
+		active_game = null

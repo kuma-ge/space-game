@@ -40,5 +40,10 @@ func player_exists(player_data: Dictionary) -> bool:
 			return true
 	return false
 
-static func create_input(player) -> PlayerInput:
+
+func reset_players() -> void:
+	players.clear()
+
+
+func create_input(player) -> PlayerInput:
 	return PlayerInput.new(player["device"], player["joypad"])

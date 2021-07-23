@@ -15,10 +15,6 @@ enum Ship {
 	J,
 	K,
 	L,
-	sidesA,
-	sidesB,
-	sidesC,
-	sidesD,
 }
 
 onready var ships = $VBoxContainer/GridContainer
@@ -52,7 +48,7 @@ func _unhandled_input(event):
 
 func _set_input(i: PlayerInput) -> void:
 	input = i
-	ships.set_input(i)
+	$VBoxContainer/GridContainer.set_input(i)
 
 
 func _set_ready(value: bool) -> void:
@@ -62,4 +58,4 @@ func _set_ready(value: bool) -> void:
 
 func set_number(num: int) -> void:
 	var file = get_script().get_path().get_base_dir() + "/gamepad" + str(num) + ".png"
-	gamepad.texture = load(file)
+	$VBoxContainer/TextureRect.texture = load(file)

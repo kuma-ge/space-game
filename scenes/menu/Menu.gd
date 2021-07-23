@@ -1,14 +1,8 @@
 extends Control
 
-onready var btn_container := $VBoxContainer
-
-const buttons = []
-
 func _ready():
-	for child in btn_container.get_children():
-		buttons.append(child)
+	focus_first()
 
-func show():
-	.show()
-	if buttons.size() > 0:
-		buttons[0].grab_focus()
+func focus_first():
+	if get_child_count() > 0:
+		get_child(0).grab_focus()

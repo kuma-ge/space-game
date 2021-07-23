@@ -3,21 +3,25 @@ extends Control
 class_name PlayerSelection
 
 signal start_game
+signal back
 
 onready var selection_container := $VBoxContainer/GridContainer
 onready var start_btn := $VBoxContainer/Start
 
 const selection_scene = preload("res://scenes/selection/CharacterSelection.tscn")
 
-onready var player_manager := Globals.player_manager
+onready var player_manager: PlayerManager = Globals.player_manager
 
 func _ready():
+	player_manager.reset_players()
 	player_manager.connect("player_added", self, "_add_player_selection")
 
 
 func _unhandled_input(event):
 	player_manager.add_player(event)
-
+	
+	if event.is_action_pressed("ui_cancel"):
+		emit_signal("back")
 
 func _add_player_selection(player, player_num) -> void:
 	var input = player_manager.create_input(player)
