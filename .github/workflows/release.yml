@@ -13,9 +13,9 @@ jobs:
       image: barichello/godot-ci:3.2.3
     strategy:
       matrix:
-        channel: [win, linux, mac, web] # Remove channel if not releasing (Available: win, linux, mac, web)
+        channel: [win, linux, mac] # Remove channel if not releasing (Available: win, linux, mac, web)
     env:
-      GAME: godot-template # Change game name
+      # GAME: godot-template # Change game name
       CHANNEL: ${{matrix.channel}}
       PUBLISH: startsWith(github.ref, 'refs/tags/')
     steps:

@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "WorldGenerator",
+"class": "BlueNoiseWorldGenerator",
+"language": "GDScript",
+"path": "res://space/BlueNoiseWorldGenerator.gd"
+}, {
 "base": "Control",
 "class": "FocusContainer",
 "language": "GDScript",
@@ -124,17 +129,13 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gut/custom/UnitTest.gd"
 }, {
-"base": "WorldGenerator",
-"class": "WhiteNoiseWorldGenerator",
-"language": "GDScript",
-"path": "res://space/WhiteNoiseWorldGenerator.gd"
-}, {
 "base": "Node2D",
 "class": "WorldGenerator",
 "language": "GDScript",
 "path": "res://space/WorldGenerator.gd"
 } ]
 _global_script_class_icons={
+"BlueNoiseWorldGenerator": "",
 "FocusContainer": "",
 "Focusable": "",
 "GUI": "",
@@ -158,7 +159,6 @@ _global_script_class_icons={
 "State": "",
 "StateMachine": "",
 "UnitTest": "",
-"WhiteNoiseWorldGenerator": "",
 "WorldGenerator": ""
 }
 
