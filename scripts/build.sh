@@ -1,7 +1,7 @@
 #!/bin/sh
 
 PLATFORM=$1
-GAME=$2
+GAME=${2:-unknown}
 
 if [ -z $PLATFORM ]; then
     echo "Platform not specified"

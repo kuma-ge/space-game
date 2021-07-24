@@ -8,5 +8,6 @@ if [ -z $PLATFORM ]; then
 fi
 
 if [ "$PLATFORM" != "mac" ]; then
-    cd build/$PLATFORM && zip -r $PLATFORM.zip *
+    pushd build/$PLATFORM && zip -r $PLATFORM.zip *
+    popd
 fi
