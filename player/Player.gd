@@ -14,13 +14,27 @@ export var speed_boost := 1.5
 onready var bullet_spawner := $BulletSpawner
 onready var health := $Health
 onready var boost := $boost
+onready var player := $player
 
 const hit_effect = preload("res://player/hiteffect/HitEffect.tscn")
+
+const colors = [
+	Color.white,
+	Color.green,
+	Color.orange,
+	Color.violet,
+]
 
 var velocity := Vector2.ZERO
 var angular_velocity := 0.0
 
 var input: PlayerInput setget _set_input
+var player_number: int setget _set_player_number
+
+func _set_player_number(num: int) -> void:
+	player_number = num
+	player.modulate = colors[num % colors.size()]
+	
 
 func _set_input(i: PlayerInput) -> void:
 	add_child(i)

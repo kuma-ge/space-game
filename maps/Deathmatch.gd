@@ -23,6 +23,7 @@ func _ready():
 		var pos = _get_next_position()
 		player_node.global_position = pos
 		player_node.input = player_manager.create_input(player)
+		player_node.player_number = _player_spawned
 		player_node.connect("died", self, "_player_killed")
 		_player_spawned += 1
 
