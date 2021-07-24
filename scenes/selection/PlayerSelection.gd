@@ -38,7 +38,7 @@ func _add_player_selection(player, player_num) -> void:
 
 
 func _update_start_button(ready) -> void:
-	start_btn.disabled = not _all_players_ready()
+	start_btn.disabled = not _all_players_ready() or not _has_min_players()
 
 
 func _all_players_ready() -> bool:
@@ -47,9 +47,11 @@ func _all_players_ready() -> bool:
 			return false
 	return true
 
+func _has_min_players() -> bool:
+	return player_manager.players.size() >= min_players
 
 func _on_Start_pressed():
-	if not _all_players_ready() or player_manager.players.size() < min_players: return
+	if not _all_players_ready() or not _has_min_players(): return
 	
 	emit_signal("start_game")
 	queue_free()

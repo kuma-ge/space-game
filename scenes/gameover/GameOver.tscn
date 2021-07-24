@@ -29,9 +29,9 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 454.0
-margin_top = 281.0
+margin_top = 269.0
 margin_right = 569.0
-margin_bottom = 319.0
+margin_bottom = 331.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -41,13 +41,22 @@ focus_node_path = NodePath("BackMenu")
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_right = 115.0
 margin_bottom = 14.0
-text = "Game Over"
+text = "GAME_OVER"
 align = 1
 
-[node name="BackMenu" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="CenterContainer/VBoxContainer"]
 margin_top = 18.0
 margin_right = 115.0
 margin_bottom = 38.0
+rect_min_size = Vector2( 0, 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackMenu" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 42.0
+margin_right = 115.0
+margin_bottom = 62.0
 text = "BACK_TO_MENU"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/BackMenu" to="." method="_on_BackMenu_pressed"]
