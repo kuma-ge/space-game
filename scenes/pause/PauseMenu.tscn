@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/pause/PauseMenu.gd" type="Script" id=1]
+[ext_resource path="res://addons/shared/menu/Menu.gd" type="Script" id=2]
 
 [node name="PauseMenu" type="Control"]
 pause_mode = 2
@@ -32,6 +33,7 @@ margin_left = 454.0
 margin_top = 266.0
 margin_right = 569.0
 margin_bottom = 334.0
+script = ExtResource( 2 )
 
 [node name="Resume" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_right = 115.0

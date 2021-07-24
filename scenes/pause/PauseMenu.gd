@@ -14,10 +14,8 @@ func _on_Exit_pressed():
 
 
 func _on_Resume_pressed():
-	get_tree().paused = false
 	Gui.hide_active()
 
 
 func _on_BackMenu_pressed():
-	get_tree().paused = false
 	Gui.show_main_menu()

@@ -35,12 +35,10 @@ func _start_game():
 
 func show_pause_menu():
 	if Globals.game_started and not get_tree().paused:
-		get_tree().paused = true
 		var pause = _show_scene(pause_menu) as PauseMenu
 
 
 func show_game_over():
-	get_tree().paused = true
 	Globals.game_started = false
 	_show_scene(game_over_menu)
 
