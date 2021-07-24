@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/gameover/GameOver.gd" type="Script" id=1]
+[ext_resource path="res://addons/shared/menu/Menu.gd" type="Script" id=2]
 
 [node name="GameOver" type="Control"]
 pause_mode = 2
@@ -31,9 +32,11 @@ margin_left = 454.0
 margin_top = 281.0
 margin_right = 569.0
 margin_bottom = 319.0
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+focus_node_path = NodePath("BackMenu")
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_right = 115.0

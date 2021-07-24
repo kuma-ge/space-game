@@ -2,6 +2,8 @@ extends CanvasLayer
 
 class_name GUI
 
+onready var theme := $Theme
+
 const main_menu = preload("res://scenes/menu/MainMenu.tscn")
 const selection_scene = preload("res://scenes/selection/PlayerSelection.tscn")
 const pause_menu = preload("res://scenes/pause/PauseMenu.tscn")
@@ -13,7 +15,7 @@ func _ready():
 	show_main_menu()
 
 func _unhandled_input(event):
-	if active == null and event.is_action_pressed("ui_cancel"):
+	if active == null and event.is_action_pressed("menu"):
 		show_pause_menu()
 
 func show_main_menu():
@@ -45,12 +47,12 @@ func show_game_over():
 
 func hide_active(hide_bg = true) -> void:
 	if active and active.is_inside_tree():
-		remove_child(active)
+		theme.remove_child(active)
 	active = null
 
 
 func _show_scene(scene: PackedScene):
 	hide_active(false)
 	active = scene.instance()
-	add_child(active)
+	theme.add_child(active)
 	return active
