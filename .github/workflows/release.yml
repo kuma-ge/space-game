@@ -29,7 +29,7 @@ jobs:
           BUTLER_API_KEY: ${{secrets.BUTLER_API_KEY}}
           USER: ${{secrets.ITCHIO_USER}}
         run: butler push build/$CHANNEL $USER/$GAME:$CHANNEL --userversion ${GITHUB_REF/refs\/tags\//}
-      - run: scripts/package.sh $CHANNEL && pwd && ls build/
+      - run: scripts/package.sh $CHANNEL && pwd && ls build/$CHANNEL
         if: env.PUBLISH
       - uses: softprops/action-gh-release@v1
         if: env.PUBLISH
