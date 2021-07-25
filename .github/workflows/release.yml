@@ -33,7 +33,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: release
-          path: $CHANNEL.zip
+          path: build/$CHANNEL/$CHANNEL.zip
       # - uses: "marvinpinto/action-automatic-releases@latest"
       #   with:
       #     repo_token: "${{ secrets.GITHUB_TOKEN }}"
