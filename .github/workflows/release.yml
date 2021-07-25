@@ -6,7 +6,7 @@ on:
       - "v*.*.*"
 
 jobs:
-  release:
+  build-release-itch:
     runs-on: ubuntu-latest
     container:
       image: barichello/godot-ci:3.2.3
@@ -20,6 +20,12 @@ jobs:
       - uses: actions/checkout@v1
       - run: scripts/prepare.sh
       - run: scripts/build.sh $CHANNEL $GAME
+      - run: scripts/package.sh $CHANNEL
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: release
+          path: ./*.zip
       - name: Publish Itch
         if: env.BUTLER_API_KEY && env.USER && env.GAME
         shell: bash
@@ -27,15 +33,16 @@ jobs:
           BUTLER_API_KEY: ${{secrets.BUTLER_API_KEY}}
           USER: ${{secrets.ITCHIO_USER}}
         run: butler push build/$CHANNEL $USER/$GAME:$CHANNEL --userversion ${GITHUB_REF/refs\/tags\//}
-      - run: scripts/package.sh $CHANNEL
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+  github-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v2
         with:
           name: release
-          path: build/**/*.zip
-      # - uses: "marvinpinto/action-automatic-releases@latest"
-      #   with:
-      #     repo_token: "${{ secrets.GITHUB_TOKEN }}"
-      #     prerelease: false
-      #     files: |
-      #       build/$CHANNEL/*.zip
+      - uses: marvinpinto/action-automatic-releases@v1.2.1
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          prerelease: false
+          files: |
+            *.zip
+      
