@@ -9,4 +9,5 @@ fi
 
 if [ "$PLATFORM" != "mac" ]; then
     cd build/$PLATFORM && zip -r $PLATFORM.zip *
+    cd ../../
 fi
