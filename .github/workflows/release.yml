@@ -25,7 +25,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: release
-          path: ./${{matrix.channel}}.zip
+          path: build/**/*.zip
       - name: Publish Itch
         if: env.BUTLER_API_KEY && env.USER && env.GAME
         shell: bash
@@ -44,5 +44,5 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           prerelease: false
           files: |
-            *.zip
+            build/**/*.zip
       
