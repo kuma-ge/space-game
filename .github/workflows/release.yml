@@ -28,7 +28,6 @@ jobs:
           USER: ${{secrets.ITCHIO_USER}}
         run: butler push build/$CHANNEL $USER/$GAME:$CHANNEL --userversion ${GITHUB_REF/refs\/tags\//}
       - run: scripts/package.sh $CHANNEL
-      - run: ls $CHANNEL
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
