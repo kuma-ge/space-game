@@ -33,6 +33,7 @@ jobs:
         if: env.PUBLISH
       - uses: softprops/action-gh-release@v1
         if: env.PUBLISH
+        run: pwd
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
