@@ -27,12 +27,12 @@ jobs:
           BUTLER_API_KEY: ${{secrets.BUTLER_API_KEY}}
           USER: ${{secrets.ITCHIO_USER}}
         run: butler push build/$CHANNEL $USER/$GAME:$CHANNEL --userversion ${GITHUB_REF/refs\/tags\//}
-      - run: scripts/package.sh $CHANNEL
+      - run: scripts/package.sh $CHANNEL && ls $CHANNEL
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: release
-          path: *.zip
+          path: $CHANNEL.zip
       # - uses: "marvinpinto/action-automatic-releases@latest"
       #   with:
       #     repo_token: "${{ secrets.GITHUB_TOKEN }}"
