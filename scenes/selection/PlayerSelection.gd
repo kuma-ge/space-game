@@ -2,9 +2,6 @@ extends Control
 
 class_name PlayerSelection
 
-signal start_game
-signal back
-
 export var min_players = 2
 
 onready var selection_container := $VBoxContainer/GridContainer
@@ -21,9 +18,6 @@ func _ready():
 
 func _unhandled_input(event):
 	player_manager.add_player(event)
-	
-	if event.is_action_pressed("ui_cancel"):
-		emit_signal("back")
 
 func _add_player_selection(player, player_num) -> void:
 	var input = player_manager.create_input(player)
@@ -53,5 +47,5 @@ func _has_min_players() -> bool:
 func _on_Start_pressed():
 	if not _all_players_ready() or not _has_min_players(): return
 	
-	emit_signal("start_game")
+	Gui.open_menu(Gui.Screen.ModeSelection)
 	queue_free()

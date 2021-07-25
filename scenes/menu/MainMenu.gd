@@ -2,54 +2,37 @@ extends Control
 
 class_name MainMenu
 
-signal start_game
-
 onready var main := $Main
 onready var options := $Options
+onready var stack := $MenuStack
 
 onready var start_btn = $Main/VBoxContainer/Start
 
-const menu_stack = []
-var current_menu setget _set_current_menu
-
 
 func _ready():
+	_hide_all()
+	stack.connect("menu_changed", self, "_menu_changed")
+	stack.open_menu(main)
+
+
+func _hide_all():
 	for child in get_children():
-		child.hide()
-	_open_menu(main)
+		if child is Control:
+			child.hide()
 
 
-func _unhandled_input(event):
-	if event.is_action("ui_cancel"):
-		_back_menu()
+func _menu_changed():
+	_hide_all()
+	if stack.current_menu != null:
+		stack.current_menu.show()
 
-
-func _set_current_menu(menu) -> void:
-	current_menu = menu
-	current_menu.show()
-
-
-func _open_menu(menu, last_menu = current_menu):
-	if last_menu:
-		menu_stack.push_back(last_menu)
-	self.current_menu = menu
-
-
-func _back_menu():
-	if menu_stack.size() == 0: return
-	
-	current_menu.hide()
-	
-	var last_menu = menu_stack.pop_back()
-	self.current_menu = last_menu
 
 func _on_Start_pressed():
-	emit_signal("start_game")
-	hide()
+	Gui.open_menu(Gui.Screen.PlayerSelection)
 
 
 func _on_Options_pressed():
-	_open_menu(options)
+	stack.open_menu(options)
 
 
 func _on_Exit_pressed():

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/menu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://addons/shared/menu/Menu.gd" type="Script" id=2]
+[ext_resource path="res://addons/shared/menu/MenuStack.gd" type="Script" id=3]
 
 [node name="MainMenu" type="MarginContainer"]
 anchor_right = 1.0
@@ -10,6 +11,9 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MenuStack" type="Node" parent="."]
+script = ExtResource( 3 )
 
 [node name="Main" type="CenterContainer" parent="."]
 visible = false
@@ -21,9 +25,9 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Main"]
 margin_left = 465.0
-margin_top = 278.0
+margin_top = 266.0
 margin_right = 559.0
-margin_bottom = 322.0
+margin_bottom = 334.0
 script = ExtResource( 2 )
 
 [node name="Start" type="Button" parent="Main/VBoxContainer"]
@@ -42,9 +46,9 @@ __meta__ = {
 }
 
 [node name="Exit" type="Button" parent="Main/VBoxContainer"]
-margin_top = 24.0
+margin_top = 48.0
 margin_right = 94.0
-margin_bottom = 44.0
+margin_bottom = 68.0
 text = "EXIT_GAME"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -83,4 +87,5 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [connection signal="pressed" from="Main/VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="Main/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]

@@ -1,7 +1,5 @@
 extends Node2D
 
-signal game_ended()
-
 const player_scene = preload("res://player/Player.tscn")
 
 onready var space := $Space
@@ -12,7 +10,7 @@ func _player_killed() -> void:
 	_player_spawned -= 1
 	
 	if _player_spawned == 1:
-		emit_signal("game_ended")
+		Events.emit_signal("game_ended", true)
 
 
 func _ready():

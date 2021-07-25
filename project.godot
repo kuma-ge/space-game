@@ -54,6 +54,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/menu/MainMenu.gd"
 }, {
+"base": "Control",
+"class": "MapSelection",
+"language": "GDScript",
+"path": "res://scenes/map_selection/MapSelection.gd"
+}, {
+"base": "Node",
+"class": "MenuStack",
+"language": "GDScript",
+"path": "res://addons/shared/menu/MenuStack.gd"
+}, {
 "base": "Node",
 "class": "MoveDirection2D",
 "language": "GDScript",
@@ -144,6 +154,8 @@ _global_script_class_icons={
 "HurtBox": "",
 "InputReader": "",
 "MainMenu": "",
+"MapSelection": "",
+"MenuStack": "",
 "MoveDirection2D": "",
 "PauseMenu": "",
 "PausedMenu": "",
