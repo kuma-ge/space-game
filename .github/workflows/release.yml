@@ -28,9 +28,14 @@ jobs:
           USER: ${{secrets.ITCHIO_USER}}
         run: butler push build/$CHANNEL $USER/$GAME:$CHANNEL --userversion ${GITHUB_REF/refs\/tags\//}
       - run: scripts/package.sh $CHANNEL
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: false
-          files: |
-            build/$CHANNEL/*.zip
+          name: release
+          path: build/$CHANNEL/$CHANNEL.zip
+      # - uses: "marvinpinto/action-automatic-releases@latest"
+      #   with:
+      #     repo_token: "${{ secrets.GITHUB_TOKEN }}"
+      #     prerelease: false
+      #     files: |
+      #       build/$CHANNEL/*.zip
