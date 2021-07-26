@@ -26,8 +26,8 @@ func _ready():
 	Events.connect("game_started", self, "_game_started")
 	Events.connect("game_ended", self, "_game_ended")
 	
-	stack.connect("menu_changed", self, "_menu_changed")
-	stack.open_menu(Screen.MainMenu)
+	stack.connect("changed", self, "_menu_changed")
+	open_menu(Screen.MainMenu)
 
 
 func _unhandled_input(event):
@@ -37,7 +37,7 @@ func _unhandled_input(event):
 
 func show_pause_menu():
 	if not get_tree().paused:
-		stack.open_menu(Screen.Pause)
+		stack.push(Screen.Pause)
 
 
 func _game_started(mode) -> void:
@@ -52,7 +52,7 @@ func _game_ended(finished: bool) -> void:
 
 
 func open_menu(menu):
-	stack.open_menu(menu)
+	stack.push(menu)
 
 
 func _remove_active_menu():
@@ -63,7 +63,7 @@ func _remove_active_menu():
 func _menu_changed():
 	_remove_active_menu()
 	
-	var menu = stack.current_menu
+	var menu = stack.current
 	if screen_scene_map.has(menu):
 		var scene = screen_scene_map[menu]
 		theme.add_child(scene.instance())

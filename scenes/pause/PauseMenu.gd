@@ -14,7 +14,7 @@ func _on_Exit_pressed():
 
 
 func _on_Resume_pressed():
-	Gui.stack.clear_menu()
+	Gui.stack.clear()
 
 
 func _on_BackMenu_pressed():

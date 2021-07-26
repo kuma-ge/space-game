@@ -59,10 +59,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/map_selection/MapSelection.gd"
 }, {
-"base": "Node",
-"class": "MenuStack",
+"base": "Control",
+"class": "Menu",
 "language": "GDScript",
-"path": "res://addons/shared/menu/MenuStack.gd"
+"path": "res://addons/shared/menu/Menu.gd"
 }, {
 "base": "Node",
 "class": "MoveDirection2D",
@@ -125,6 +125,11 @@ _global_script_classes=[ {
 "path": "res://addons/shared/misc/Spawner.gd"
 }, {
 "base": "Node",
+"class": "Stack",
+"language": "GDScript",
+"path": "res://addons/shared/utils/Stack.gd"
+}, {
+"base": "Node",
 "class": "State",
 "language": "GDScript",
 "path": "res://addons/StateMachine/State.gd"
@@ -155,7 +160,7 @@ _global_script_class_icons={
 "InputReader": "",
 "MainMenu": "",
 "MapSelection": "",
-"MenuStack": "",
+"Menu": "",
 "MoveDirection2D": "",
 "PauseMenu": "",
 "PausedMenu": "",
@@ -168,6 +173,7 @@ _global_script_class_icons={
 "RandomMove": "",
 "SceneTest": "",
 "Spawner": "",
+"Stack": "",
 "State": "",
 "StateMachine": "",
 "UnitTest": "",

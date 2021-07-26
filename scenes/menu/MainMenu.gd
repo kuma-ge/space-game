@@ -11,8 +11,8 @@ onready var start_btn = $Main/VBoxContainer/Start
 
 func _ready():
 	_hide_all()
-	stack.connect("menu_changed", self, "_menu_changed")
-	stack.open_menu(main)
+	stack.connect("changed", self, "_menu_changed")
+	stack.push(main)
 
 
 func _hide_all():
@@ -23,8 +23,8 @@ func _hide_all():
 
 func _menu_changed():
 	_hide_all()
-	if stack.current_menu != null:
-		stack.current_menu.show()
+	if stack.current != null:
+		stack.current.show()
 
 
 func _on_Start_pressed():
@@ -32,7 +32,7 @@ func _on_Start_pressed():
 
 
 func _on_Options_pressed():
-	stack.open_menu(options)
+	stack.push(options)
 
 
 func _on_Exit_pressed():
