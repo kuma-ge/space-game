@@ -20,14 +20,11 @@ func _unhandled_input(event):
 	player_manager.add_player(event)
 
 func _add_player_selection(player, player_num) -> void:
-	var input = player_manager.create_input(player)
-	player_manager.add_child(input)
-	
 	var selection = selection_scene.instance()
 	selection_container.add_child(selection)
 	selection.set_number(player_num)
 	selection.connect("player_ready", self, "_update_start_button")
-	selection.input = input
+	selection.input = player_manager.find_input(player)
 	_update_start_button(null)
 
 

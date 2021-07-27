@@ -29,12 +29,19 @@ func add_player(event: InputEvent) -> void:
 		return
 	
 	players.append(data)
+	_create_input(data)
 	emit_signal("player_added", data, players.size())
 	print("Player added: " + str(data))
 
 
+func _create_input(player) -> void:
+	var input = PlayerInput.new(player["device"], player["joypad"])
+	add_child(input)
+
+
 func player_exists(player_data: Dictionary) -> bool:
 	return find_player_index(player_data) != -1
+
 
 func find_player_index(player: Dictionary) -> int:
 	for i in range(0, players.size()):
@@ -45,9 +52,22 @@ func find_player_index(player: Dictionary) -> int:
 	return -1
 
 
+func find_input(player: Dictionary) -> PlayerInput:
+	var index = find_player_index(player)
+	if index != -1:
+		return get_child(index) as PlayerInput
+	return null
+
+
+func get_inputs() -> Array:
+	var result = []
+	for child in get_children():
+		if child is PlayerInput:
+			result.append(child)
+	return result
+
+
 func reset_players() -> void:
 	players.clear()
-
-
-func create_input(player) -> PlayerInput:
-	return PlayerInput.new(player["device"], player["joypad"])
+	for child in get_children():
+		remove_child(child)

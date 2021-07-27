@@ -28,17 +28,13 @@ const colors = [
 var velocity := Vector2.ZERO
 var angular_velocity := 0.0
 
-var input: PlayerInput setget _set_input
+var input: PlayerInput
 var player_number: int setget _set_player_number
 
 func _set_player_number(num: int) -> void:
 	player_number = num
 	player.modulate = colors[num % colors.size()]
-	
 
-func _set_input(i: PlayerInput) -> void:
-	add_child(i)
-	input = i
 
 func _physics_process(delta: float) -> void:
 	bullet_spawner.spawn = input.is_pressed("fire")

@@ -14,13 +14,12 @@ func _player_killed() -> void:
 
 
 func _ready():
-	var player_manager = Globals.player_manager
-	for player in player_manager.players:
+	for player in Globals.player_manager.get_inputs():
 		var player_node = player_scene.instance()
 		add_child(player_node)
 		var pos = _get_next_position()
 		player_node.global_position = pos
-		player_node.input = player_manager.create_input(player)
+		player_node.input = player
 		player_node.player_number = _player_spawned
 		player_node.connect("died", self, "_player_killed")
 		_player_spawned += 1
