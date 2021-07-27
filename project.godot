@@ -105,6 +105,11 @@ _global_script_classes=[ {
 "path": "res://scenes/selection/PlayerSelection.gd"
 }, {
 "base": "Node",
+"class": "PlayerSpawner",
+"language": "GDScript",
+"path": "res://player/PlayerSpawner.gd"
+}, {
+"base": "Node",
 "class": "Random",
 "language": "GDScript",
 "path": "res://addons/shared/utils/Random.gd"
@@ -169,6 +174,7 @@ _global_script_class_icons={
 "PlayerInput": "",
 "PlayerManager": "",
 "PlayerSelection": "",
+"PlayerSpawner": "",
 "Random": "",
 "RandomMove": "",
 "SceneTest": "",

@@ -1,8 +1,7 @@
 extends Node2D
 
-const player_scene = preload("res://player/Player.tscn")
-
 onready var space := $Space
+onready var player_spawner := $PlayerSpawner
 
 var _player_spawned = 0
 
@@ -14,13 +13,10 @@ func _player_killed() -> void:
 
 
 func _ready():
-	for player in Globals.player_manager.get_inputs():
-		var player_node = player_scene.instance()
+	for player_node in player_spawner.create_players():
 		add_child(player_node)
 		var pos = _get_next_position()
 		player_node.global_position = pos
-		player_node.input = player
-		player_node.player_number = _player_spawned
 		player_node.connect("died", self, "_player_killed")
 		_player_spawned += 1
 
