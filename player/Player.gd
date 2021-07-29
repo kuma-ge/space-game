@@ -79,5 +79,5 @@ func _on_HurtBox_damaged(dmg):
 
 
 func _on_Health_zero_health():
-	emit_signal("died")
 	queue_free()
+	emit_signal("died")

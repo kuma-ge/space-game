@@ -25,9 +25,7 @@ onready var theme := $Theme
 func _ready():
 	Events.connect("game_started", self, "_game_started")
 	Events.connect("game_ended", self, "_game_ended")
-	
 	stack.connect("changed", self, "_menu_changed")
-	open_menu(Screen.MainMenu)
 
 
 func _unhandled_input(event):
@@ -44,8 +42,8 @@ func _game_started(mode) -> void:
 	open_menu(Screen.InGame)
 
 
-func _game_ended(finished: bool) -> void:
-	if finished:
+func _game_ended(player_won) -> void:
+	if player_won != null:
 		open_menu(Screen.GameOver)
 	else:
 		open_menu(Screen.MainMenu)

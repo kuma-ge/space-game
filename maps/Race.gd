@@ -16,8 +16,11 @@ var checkpoints = []
 var init = false
 
 func _checkpoint_passed(player_num: int) -> void:
-	print("Player " + str(player_num) + " passed checkpoint")
 	player_checkpoints[player_num] += 1
+	
+	if player_checkpoints[player_num] >= laps * checkpoints.size():
+		Events.emit_signal("game_ended", player_num)
+	
 	_update_checkpoint_for(player_num)
 	
 

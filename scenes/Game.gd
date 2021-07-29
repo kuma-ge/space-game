@@ -10,6 +10,7 @@ var active_game
 func _ready():
 	Events.connect("game_started", self, "_start_game")
 	Events.connect("gui_changed", self, "_handle_gui_changed")
+	Gui.open_menu(Gui.Screen.MainMenu)
 
 func _start_game(mode):
 	if not mode_map.has(mode):

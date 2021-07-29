@@ -3,6 +3,8 @@ extends Area2D
 signal player_passed(player_num)
 
 onready var collision := $CollisionShape2D
+onready var left := $Left
+onready var right := $Right
 
 var expecting_players = []
 
@@ -18,6 +20,8 @@ func set_size(size: float) -> void:
 	var shape = RectangleShape2D.new()
 	shape.extents = Vector2(size, 10)
 	collision.shape = shape
+	left.position.x = -size
+	right.position.x = size
 
 
 func set_direction(dir: Vector2) -> void:

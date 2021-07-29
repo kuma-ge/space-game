@@ -8,7 +8,9 @@
 script = ExtResource( 2 )
 
 [node name="Space" parent="." instance=ExtResource( 1 )]
-asteroid_density = 20
+asteroid_density = 15
+sector_margin_proportion = 0.01
+subsector_margin_proportion = 0.01
 
 [node name="PlayerSpawner" type="Node" parent="."]
 script = ExtResource( 3 )

@@ -4,17 +4,24 @@ onready var space := $Space
 onready var player_spawner := $PlayerSpawner
 
 var _player_spawned = 0
+var _players = []
 
 func _player_killed() -> void:
 	_player_spawned -= 1
 	
 	if _player_spawned == 1:
-		Events.emit_signal("game_ended", true)
+		var alive_player: Player
+		for player in _players:
+			if player.is_inside_tree() and player.is_queued_for_deletion():
+				alive_player = player
+				break
+		Events.emit_signal("game_ended", alive_player.player_number)
 
 
 func _ready():
 	for player_node in player_spawner.create_players():
 		add_child(player_node)
+		_players.append(player_node)
 		var pos = _get_next_position()
 		player_node.global_position = pos
 		player_node.connect("died", self, "_player_killed")
