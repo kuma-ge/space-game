@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://space/BlueNoiseWorldGenerator.gd"
 }, {
+"base": "Reference",
+"class": "EquationFactory",
+"language": "GDScript",
+"path": "res://addons/shared/utils/equations/EquationFactory.gd"
+}, {
 "base": "Control",
 "class": "FocusContainer",
 "language": "GDScript",
@@ -48,6 +53,11 @@ _global_script_classes=[ {
 "class": "InputReader",
 "language": "GDScript",
 "path": "res://addons/shared/input/InputReader.gd"
+}, {
+"base": "Reference",
+"class": "LinearEquation",
+"language": "GDScript",
+"path": "res://addons/shared/utils/equations/LinearEquation.gd"
 }, {
 "base": "Control",
 "class": "MainMenu",
@@ -149,6 +159,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gut/custom/UnitTest.gd"
 }, {
+"base": "Reference",
+"class": "VectorSort",
+"language": "GDScript",
+"path": "res://addons/shared/utils/sort/VectorSort.gd"
+}, {
+"base": "Reference",
+"class": "VectorUtils",
+"language": "GDScript",
+"path": "res://addons/shared/utils/VectorUtils.gd"
+}, {
 "base": "Node2D",
 "class": "WorldGenerator",
 "language": "GDScript",
@@ -156,6 +176,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "BlueNoiseWorldGenerator": "",
+"EquationFactory": "",
 "FocusContainer": "",
 "Focusable": "",
 "GUI": "",
@@ -163,6 +184,7 @@ _global_script_class_icons={
 "HitBox": "",
 "HurtBox": "",
 "InputReader": "",
+"LinearEquation": "",
 "MainMenu": "",
 "MapSelection": "",
 "Menu": "",
@@ -183,6 +205,8 @@ _global_script_class_icons={
 "State": "",
 "StateMachine": "",
 "UnitTest": "",
+"VectorSort": "",
+"VectorUtils": "",
 "WorldGenerator": ""
 }
 
