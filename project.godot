@@ -142,7 +142,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Stack",
 "language": "GDScript",
-"path": "res://addons/shared/utils/Stack.gd"
+"path": "res://addons/shared/utils/datatypes/Stack.gd"
 }, {
 "base": "Node",
 "class": "State",

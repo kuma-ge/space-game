@@ -9,20 +9,39 @@ onready var player_spawner := $PlayerSpawner
 onready var space := $Space
 onready var path := $Path2D
 
+var laps = 3
+var player_checkpoints = {}
+var checkpoints = []
+
 var init = false
 
-func _ready():
-	for player in player_spawner.create_players():
-		add_child(player)
+func _checkpoint_passed(player_num: int) -> void:
+	print("Player " + str(player_num) + " passed checkpoint")
+	player_checkpoints[player_num] += 1
+	_update_checkpoint_for(player_num)
+	
+
+func _update_checkpoint_for(player_num: int) -> void:
+	var current_checkpoint = player_checkpoints[player_num] + 1
+	var checkpoint = checkpoints[current_checkpoint % checkpoints.size()]
+	checkpoint.add_expecting_player(player_num)
 
 func _process(delta):
 	if not init:
 		_create_race_track()
+		
+		for player in player_spawner.create_players():
+			add_child(player)
+			player.global_position = checkpoints[0].global_position
+			player.turn(checkpoints[0].direction)
+			
+			player_checkpoints[player.player_number] = 0
+			_update_checkpoint_for(player.player_number)
+		
 		init = true
 
 func _create_race_track():
 	var points = _get_points()
-	points.pop_back() # Last one not needed, it should be very close to the start
 	
 	var asteroid_group = space.get_asteriods(points, 300)
 	
@@ -43,30 +62,33 @@ func _create_race_track():
 		
 		var checkpoint = _set_checkpoint(asteroids, dir, point)
 		if not checkpoint:
-			print("Could not create checkpoint for " + str(point) + "with " + str(asteroids))
-		else:
-			print("Created checkpoint for " + str(point) + " with " + str(asteroids))
+			print("Could not create checkpoint for " + str(point))
 
 func _set_checkpoint(points: Array, dir: Vector2, point: Vector2) -> Node:
 	var line = VectorUtils.find_orthogonal_line(points, dir, point, min_checkpoint_size, max_checkpoint_size)
 	if line.size() != 2:
 		return null
 	
-	return _create_checkpoint(line[0], line[1])
+	return _create_checkpoint(line[0], line[1], dir)
 
-func _create_checkpoint(left: Vector2, right: Vector2) -> Node:
+func _create_checkpoint(left: Vector2, right: Vector2, dir: Vector2) -> Node:
 	var checkpoint = checkpoint_scene.instance()
 	add_child(checkpoint)
-#	checkpoint.set_size(distance / 2)
 	
-	checkpoint.global_position = left
+	var center_dir = (right - left) / 2
+	checkpoint.global_position = left + center_dir
+	checkpoint.set_size(center_dir.length())
 	
-	var c2 = checkpoint_scene.instance()
-	add_child(c2)
-	c2.global_position = right
-				
-#	var center_dir = left_pos.direction_to(right_pos) / 2
-#	checkpoint.global_position = left_pos + center_dir
+	var dir_angle = rad2deg(center_dir.angle_to(dir))
+	var angle = 90
+	if dir_angle < 0:
+		angle *= -1
+	
+	var checkpoint_dir = center_dir.rotated(deg2rad(angle))
+	checkpoint.set_direction(checkpoint_dir)
+	checkpoint.connect("player_passed", self, "_checkpoint_passed")
+	checkpoints.append(checkpoint)
+	
 	return checkpoint
 
 func _split_objects(objects: Array, linear: LinearEquation) -> Array:

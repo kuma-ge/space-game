@@ -35,6 +35,10 @@ func _set_player_number(num: int) -> void:
 	$player.modulate = colors[num % colors.size()]
 
 
+func turn(dir: Vector2) -> void:
+	rotation = Vector2.UP.angle_to(dir)
+
+
 func _physics_process(delta: float) -> void:
 	bullet_spawner.spawn = input.is_pressed("fire")
 	
