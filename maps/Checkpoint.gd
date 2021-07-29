@@ -1,5 +1,7 @@
 extends Area2D
 
+class_name Checkpoint
+
 signal player_passed(player_num)
 
 onready var collision := $CollisionShape2D

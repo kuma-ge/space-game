@@ -25,23 +25,40 @@ func _checkpoint_passed(player_num: int) -> void:
 	
 
 func _update_checkpoint_for(player_num: int) -> void:
-	var current_checkpoint = player_checkpoints[player_num] + 1
-	var checkpoint = checkpoints[current_checkpoint % checkpoints.size()]
+	var checkpoint = _get_checkpoint_for(player_num)
 	checkpoint.add_expecting_player(player_num)
+
+func _get_checkpoint_for(player_num: int, offset = 0) -> Checkpoint:
+	var checkpoint_value = player_checkpoints[player_num] + 1 + offset
+	return checkpoints[checkpoint_value % checkpoints.size()]
+
 
 func _process(delta):
 	if not init:
 		_create_race_track()
 		
-		for player in player_spawner.create_players():
-			add_child(player)
-			player.global_position = checkpoints[0].global_position
-			player.turn(checkpoints[0].direction)
-			
-			player_checkpoints[player.player_number] = 0
-			_update_checkpoint_for(player.player_number)
+		if checkpoints.size() != 0:
+			for x in player_spawner.create_players():
+				var player = x as Player
+				player_checkpoints[player.player_number] = 0
+				_update_checkpoint_for(player.player_number)
+				_spawn_player(player.player_number)
+		else:
+			print("Cannot play game without checkpoints")
 		
 		init = true
+
+
+func _spawn_player(player_num):
+	var player = player_spawner.create_player(player_num)
+	add_child(player)
+	var checkpoint = _get_checkpoint_for(player_num, -1)
+	player.global_position = checkpoint.global_position
+	player.turn(checkpoint.direction)
+	player.connect("died", self, "_deffered_player_spawn", [player.player_number])
+
+func _deffered_player_spawn(player_num):
+	call_deferred("_spawn_player", player_num)
 
 func _create_race_track():
 	var points = _get_points()

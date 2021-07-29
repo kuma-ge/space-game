@@ -66,6 +66,12 @@ func get_inputs() -> Array:
 			result.append(child)
 	return result
 
+func get_input(idx: int) -> PlayerInput:
+	var inputs = get_inputs()
+	return inputs[idx] if idx >= 0 and idx < inputs.size() else null
+
+func get_player_count() -> int:
+	return players.size()
 
 func reset_players() -> void:
 	players.clear()
