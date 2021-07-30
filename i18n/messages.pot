@@ -1,0 +1,59 @@
+# Translations template for PROJECT.
+# Copyright (C) 2021 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-07-30 12:58+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: scenes/gameover/GameOver.tscn:44
+msgid "GAME_OVER"
+msgstr ""
+
+#: scenes/gameover/GameOver.tscn:60 scenes/pause/PauseMenu.tscn:58
+msgid "BACK_TO_MENU"
+msgstr ""
+
+#: scenes/map_selection/MapSelection.tscn:31
+msgid "SELECT_GAME_MODE"
+msgstr ""
+
+#: scenes/map_selection/MapSelection.tscn:42
+msgid "RACE"
+msgstr ""
+
+#: scenes/map_selection/MapSelection.tscn:49
+msgid "DEATHMATCH"
+msgstr ""
+
+#: scenes/menu/MainMenu.tscn:36 scenes/selection/PlayerSelection.tscn:37
+msgid "START_GAME"
+msgstr ""
+
+#: scenes/menu/MainMenu.tscn:43 scenes/pause/PauseMenu.tscn:49
+msgid "OPTIONS"
+msgstr ""
+
+#: scenes/menu/MainMenu.tscn:52 scenes/pause/PauseMenu.tscn:67
+msgid "EXIT_GAME"
+msgstr ""
+
+#: scenes/pause/PauseMenu.tscn:41
+msgid "RESUME_GAME"
+msgstr ""
+
+#: scenes/selection/CharacterSelection.gd:56
+msgid "READY"
+msgstr ""
+
