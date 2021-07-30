@@ -30,9 +30,12 @@ var angular_velocity := 0.0
 var input: PlayerInput
 var player_number: int setget _set_player_number
 
+static func get_player_color(player_num: int) -> Color:
+	return colors[player_num % colors.size()]
+
 func _set_player_number(num: int) -> void:
 	player_number = num
-	$player.modulate = colors[num % colors.size()]
+	$player.modulate = get_player_color(num)
 
 
 func turn(dir: Vector2) -> void:
