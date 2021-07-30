@@ -4,6 +4,7 @@ class_name GUI
 
 enum Screen {
 	MainMenu,
+	Options,
 	PlayerSelection,
 	Pause,
 	GameOver,
@@ -13,6 +14,7 @@ enum Screen {
 
 const screen_scene_map = {
 	Screen.MainMenu: preload("res://scenes/menu/MainMenu.tscn"),
+	Screen.Options: preload("res://scenes/menu/OptionsMenu.tscn"),
 	Screen.PlayerSelection: preload("res://scenes/selection/PlayerSelection.tscn"),
 	Screen.Pause: preload("res://scenes/pause/PauseMenu.tscn"),
 	Screen.GameOver: preload("res://scenes/gameover/GameOver.tscn"),

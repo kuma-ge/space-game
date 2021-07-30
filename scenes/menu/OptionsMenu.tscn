@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/menu/OptionsMenu.gd" type="Script" id=1]
+[ext_resource path="res://addons/shared/misc/SelectOption.gd" type="Script" id=2]
+[ext_resource path="res://addons/shared/misc/TabName.gd" type="Script" id=3]
+[ext_resource path="res://addons/shared/misc/Select.gd" type="Script" id=4]
+
+[node name="OptionsMenu" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 580.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SETTINGS" type="Tabs" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 3 )
+text = "SETTINGS"
+
+[node name="VBoxContainer" type="GridContainer" parent="TabContainer/SETTINGS"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/SETTINGS/VBoxContainer"]
+margin_top = 3.0
+margin_right = 72.0
+margin_bottom = 17.0
+text = "LANGUAGE"
+
+[node name="Languages" type="OptionButton" parent="TabContainer/SETTINGS/VBoxContainer"]
+margin_left = 76.0
+margin_right = 105.0
+margin_bottom = 20.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DE" type="Node" parent="TabContainer/SETTINGS/VBoxContainer/Languages"]
+script = ExtResource( 2 )
+text = "LANG_DE"
+
+[node name="EN_US" type="Node" parent="TabContainer/SETTINGS/VBoxContainer/Languages"]
+script = ExtResource( 2 )
+text = "LANG_EN_US"
+
+[node name="INPUTS" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 3 )
+text = "INPUTS"
+
+[connection signal="item_selected" from="TabContainer/SETTINGS/VBoxContainer/Languages" to="." method="_on_Languages_item_selected"]

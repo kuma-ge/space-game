@@ -139,6 +139,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gut/custom/SceneTest.gd"
 }, {
+"base": "Node",
+"class": "SelectOption",
+"language": "GDScript",
+"path": "res://addons/shared/misc/SelectOption.gd"
+}, {
 "base": "Node2D",
 "class": "Spawner",
 "language": "GDScript",
@@ -206,6 +211,7 @@ _global_script_class_icons={
 "Random": "",
 "RandomMove": "",
 "SceneTest": "",
+"SelectOption": "",
 "Spawner": "",
 "Stack": "",
 "State": "",

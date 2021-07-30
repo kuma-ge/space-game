@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-07-30 12:58+0200\n"
+"POT-Creation-Date: 2021-07-30 20:50+0200\n"
 "PO-Revision-Date: 2021-07-30 11:18+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -18,42 +18,49 @@ msgstr ""
 "Generated-By: Babel 2.9.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: scenes/gameover/GameOver.tscn:44
 msgid "GAME_OVER"
 msgstr "Game Over"
 
-#: scenes/gameover/GameOver.tscn:60 scenes/pause/PauseMenu.tscn:58
 msgid "BACK_TO_MENU"
 msgstr "Back to menu"
 
-#: scenes/map_selection/MapSelection.tscn:31
 msgid "SELECT_GAME_MODE"
 msgstr "Select game mode"
 
-#: scenes/map_selection/MapSelection.tscn:42
 msgid "RACE"
 msgstr "Race"
 
-#: scenes/map_selection/MapSelection.tscn:49
 msgid "DEATHMATCH"
 msgstr "Deathmatch"
 
-#: scenes/menu/MainMenu.tscn:36 scenes/selection/PlayerSelection.tscn:37
 msgid "START_GAME"
 msgstr "Start game"
 
-#: scenes/menu/MainMenu.tscn:43 scenes/pause/PauseMenu.tscn:49
 msgid "OPTIONS"
 msgstr "Options"
 
-#: scenes/menu/MainMenu.tscn:52 scenes/pause/PauseMenu.tscn:67
 msgid "EXIT_GAME"
 msgstr "Exit game"
 
-#: scenes/pause/PauseMenu.tscn:41
+msgid "SETTINGS"
+msgstr "Settings"
+
+msgid "LANGUAGE"
+msgstr "Language"
+
+#, fuzzy
+msgid "LANG_DE"
+msgstr "German"
+
+#, fuzzy
+msgid "LANG_EN_US"
+msgstr "English"
+
+msgid "INPUTS"
+msgstr "Inputs"
+
 msgid "RESUME_GAME"
 msgstr "Resume game"
 
-#: scenes/selection/CharacterSelection.gd:56
 msgid "READY"
 msgstr "Ready"
