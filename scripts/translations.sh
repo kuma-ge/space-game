@@ -10,12 +10,15 @@ pybabel extract -F babelrc -k text -k LineEdit/placeholder_text -k tr --no-locat
 
 cd i18n
 
-# Init
-# msginit --no-translator --input=messages.pot --locale=de
-# msginit --no-translator --input=messages.pot --locale=en
+LANGS=(en de)
 
-msgmerge --update --backup=none --no-location de.po messages.pot
-msgmerge --update --backup=none --no-location en.po messages.pot
+for LANG in "${LANGS[@]}"; do
+    # msginit --no-translator --input=messages.pot --locale=$LANG
 
-msgfmt de.po --check
-msgfmt en.po --check
+    msgmerge --update --no-fuzzy-matching --backup=none --no-location $LANG.po messages.pot
+
+    msgfmt $LANG.po --check
+
+    msgcmp $LANG.po $LANG.po
+    # echo $str1 | grep -o "msgstr \"\"\n\n" | wc -l
+done

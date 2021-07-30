@@ -2,7 +2,9 @@ name: Test
 
 on:
   push:
-    branches: [master]
+  pull_request:
+    branches:
+      - master
 
 jobs:
   tests:
@@ -16,3 +18,5 @@ jobs:
       - name: Unit Test
         run: scripts/test.sh
         timeout-minutes: 5
+      - name: Translations
+        run: scripts/translations.sh
