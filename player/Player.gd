@@ -14,7 +14,6 @@ export var speed_boost := 1.5
 onready var bullet_spawner := $BulletSpawner
 onready var health := $Health
 onready var boost := $boost
-onready var player := $player
 
 const hit_effect = preload("res://player/hiteffect/HitEffect.tscn")
 
@@ -28,17 +27,20 @@ const colors = [
 var velocity := Vector2.ZERO
 var angular_velocity := 0.0
 
-var input: PlayerInput setget _set_input
+var input: PlayerInput
 var player_number: int setget _set_player_number
+
+static func get_player_color(player_num: int) -> Color:
+	return colors[player_num % colors.size()]
 
 func _set_player_number(num: int) -> void:
 	player_number = num
-	player.modulate = colors[num % colors.size()]
-	
+	$player.modulate = get_player_color(num)
 
-func _set_input(i: PlayerInput) -> void:
-	add_child(i)
-	input = i
+
+func turn(dir: Vector2) -> void:
+	rotation = Vector2.UP.angle_to(dir)
+
 
 func _physics_process(delta: float) -> void:
 	bullet_spawner.spawn = input.is_pressed("fire")
@@ -80,5 +82,5 @@ func _on_HurtBox_damaged(dmg):
 
 
 func _on_Health_zero_health():
-	emit_signal("died")
 	queue_free()
+	emit_signal("died")

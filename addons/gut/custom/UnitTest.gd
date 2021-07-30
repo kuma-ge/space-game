@@ -33,3 +33,15 @@ func joypad_button_event(button: int, pressed = true) -> InputEvent:
 	joy.button_index = button
 	joy.pressed = pressed
 	return joy
+
+
+func assert_array_eq(actual, expected: Array) -> void:
+	if expected == null:
+		assert_null(actual)
+	else:
+		if actual != null:
+			assert_eq(actual.size(), expected.size())
+			for x in expected:
+				assert_has(actual, x)
+		else:
+			assert_not_null(actual)

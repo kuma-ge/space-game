@@ -1,29 +1,29 @@
 extends Node2D
 
-signal game_ended()
-
-const player_scene = preload("res://player/Player.tscn")
-
 onready var space := $Space
+onready var player_spawner := $PlayerSpawner
 
 var _player_spawned = 0
+var _players = []
 
 func _player_killed() -> void:
 	_player_spawned -= 1
 	
 	if _player_spawned == 1:
-		emit_signal("game_ended")
+		var alive_player: Player
+		for player in _players:
+			if player.is_inside_tree() and player.is_queued_for_deletion():
+				alive_player = player
+				break
+		Events.emit_signal("game_ended", alive_player.player_number)
 
 
 func _ready():
-	var player_manager = Globals.player_manager
-	for player in player_manager.players:
-		var player_node = player_scene.instance()
+	for player_node in player_spawner.create_players():
 		add_child(player_node)
+		_players.append(player_node)
 		var pos = _get_next_position()
 		player_node.global_position = pos
-		player_node.input = player_manager.create_input(player)
-		player_node.player_number = _player_spawned
 		player_node.connect("died", self, "_player_killed")
 		_player_spawned += 1
 

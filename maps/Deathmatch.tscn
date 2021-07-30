@@ -2,31 +2,15 @@
 
 [ext_resource path="res://space/Space.tscn" type="PackedScene" id=1]
 [ext_resource path="res://maps/Deathmatch.gd" type="Script" id=2]
-[ext_resource path="res://maps/Wall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://player/PlayerSpawner.gd" type="Script" id=3]
 
 [node name="Deathmatch" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Space" parent="." instance=ExtResource( 1 )]
-asteroid_density = 20
+asteroid_density = 15
+sector_margin_proportion = 0.01
+subsector_margin_proportion = 0.01
 
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
-zoom = Vector2( 2, 2 )
-
-[node name="Walls" type="Node2D" parent="."]
-
-[node name="Wall" parent="Walls" instance=ExtResource( 3 )]
-camera_path = NodePath("../../Camera2D")
-
-[node name="Wall2" parent="Walls" instance=ExtResource( 3 )]
-size = 1
-camera_path = NodePath("../../Camera2D")
-
-[node name="Wall3" parent="Walls" instance=ExtResource( 3 )]
-size = 2
-camera_path = NodePath("../../Camera2D")
-
-[node name="Wall4" parent="Walls" instance=ExtResource( 3 )]
-size = 3
-camera_path = NodePath("../../Camera2D")
+[node name="PlayerSpawner" type="Node" parent="."]
+script = ExtResource( 3 )

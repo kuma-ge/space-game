@@ -14,8 +14,8 @@ func _on_Exit_pressed():
 
 
 func _on_Resume_pressed():
-	Gui.hide_active()
+	Gui.stack.clear()
 
 
 func _on_BackMenu_pressed():
-	Gui.show_main_menu()
+	Events.emit_signal("game_ended", false)

@@ -20,15 +20,6 @@ func add_player(player) -> void:
 	_players.append(player)
 
 
-func is_occupied(global_pos: Vector2, size = 3) -> bool:
-	var data = _sectors[_current_sector]
-	for asteroid in data:
-		var boundary = Rect2(asteroid.global_position, Vector2(size, size))
-		if boundary.has_point(global_pos):
-			return true
-	return false
-
-
 func _ready() -> void:
 	_rng.randomize()
 	generate()

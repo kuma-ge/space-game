@@ -2,57 +2,68 @@ extends CanvasLayer
 
 class_name GUI
 
+enum Screen {
+	MainMenu,
+	PlayerSelection,
+	Pause,
+	GameOver,
+	ModeSelection,
+	InGame,
+}
+
+const screen_scene_map = {
+	Screen.MainMenu: preload("res://scenes/menu/MainMenu.tscn"),
+	Screen.PlayerSelection: preload("res://scenes/selection/PlayerSelection.tscn"),
+	Screen.Pause: preload("res://scenes/pause/PauseMenu.tscn"),
+	Screen.GameOver: preload("res://scenes/gameover/GameOver.tscn"),
+	Screen.ModeSelection: preload("res://scenes/map_selection/MapSelection.tscn"),
+}
+
+onready var stack := $MenuStack
 onready var theme := $Theme
 
-const main_menu = preload("res://scenes/menu/MainMenu.tscn")
-const selection_scene = preload("res://scenes/selection/PlayerSelection.tscn")
-const pause_menu = preload("res://scenes/pause/PauseMenu.tscn")
-const game_over_menu = preload("res://scenes/gameover/GameOver.tscn")
-
-var active: Node
-
 func _ready():
-	show_main_menu()
+	Events.connect("game_started", self, "_game_started")
+	Events.connect("game_ended", self, "_game_ended")
+	stack.connect("changed", self, "_menu_changed")
+
 
 func _unhandled_input(event):
-	if active == null and event.is_action_pressed("menu"):
+	if Globals.game_started and event.is_action_pressed("menu"):
 		show_pause_menu()
-
-func show_main_menu():
-	Events.emit_signal("main_menu")
-	Globals.game_started = false
-	var menu = _show_scene(main_menu) as MainMenu
-	menu.connect("start_game", self, "_show_player_selection")
-
-func _show_player_selection():
-	var selection = _show_scene(selection_scene) as PlayerSelection
-	selection.connect("start_game", self, "_start_game")
-	selection.connect("back", self, "show_main_menu")
-	
-func _start_game():
-	hide_active()
-	Globals.game_started = true
-	Events.emit_signal("game_started")
 
 
 func show_pause_menu():
-	if Globals.game_started and not get_tree().paused:
-		var pause = _show_scene(pause_menu) as PauseMenu
+	if not get_tree().paused:
+		stack.push(Screen.Pause)
 
 
-func show_game_over():
-	Globals.game_started = false
-	_show_scene(game_over_menu)
+func _game_started(mode) -> void:
+	open_menu(Screen.InGame)
 
 
-func hide_active(hide_bg = true) -> void:
-	if active and active.is_inside_tree():
-		theme.remove_child(active)
-	active = null
+func _game_ended(player_won) -> void:
+	if player_won != null:
+		open_menu(Screen.GameOver)
+	else:
+		open_menu(Screen.MainMenu)
 
 
-func _show_scene(scene: PackedScene):
-	hide_active(false)
-	active = scene.instance()
-	theme.add_child(active)
-	return active
+func open_menu(menu):
+	stack.push(menu)
+
+
+func _remove_active_menu():
+	for child in theme.get_children():
+		theme.remove_child(child)
+
+
+func _menu_changed():
+	_remove_active_menu()
+	
+	var menu = stack.current
+	if screen_scene_map.has(menu):
+		var scene = screen_scene_map[menu]
+		theme.add_child(scene.instance())
+		Events.emit_signal("gui_changed", menu)
+
