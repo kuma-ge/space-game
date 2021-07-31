@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-07-30 21:02+0200\n"
+"POT-Creation-Date: 2021-07-31 15:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,6 +54,24 @@ msgid "LANG_EN_US"
 msgstr ""
 
 msgid "INPUTS"
+msgstr ""
+
+msgid "INPUT_MOVE_UP"
+msgstr ""
+
+msgid "INPUT_MOVE_DOWN"
+msgstr ""
+
+msgid "INPUT_MOVE_LEFT"
+msgstr ""
+
+msgid "INPUT_MOVE_RIGHT"
+msgstr ""
+
+msgid "INPUT_FIRE"
+msgstr ""
+
+msgid "INPUT_BOOST"
 msgstr ""
 
 msgid "RESUME_GAME"

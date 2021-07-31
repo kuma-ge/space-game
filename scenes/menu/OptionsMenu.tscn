@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/menu/OptionsMenu.gd" type="Script" id=1]
 [ext_resource path="res://addons/shared/misc/SelectOption.gd" type="Script" id=2]
 [ext_resource path="res://addons/shared/misc/TabName.gd" type="Script" id=3]
 [ext_resource path="res://addons/shared/misc/Select.gd" type="Script" id=4]
 [ext_resource path="res://addons/shared/menu/Menu.gd" type="Script" id=5]
+[ext_resource path="res://scenes/menu/PlayerInputMap.tscn" type="PackedScene" id=6]
 
 [node name="OptionsMenu" type="MarginContainer"]
 anchor_right = 1.0
@@ -40,20 +41,20 @@ text = "SETTINGS"
 [node name="CenterContainer" type="CenterContainer" parent="TabContainer/SETTINGS"]
 anchor_right = 1.0
 margin_bottom = 20.0
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+focus_node_path = NodePath("VBoxContainer/Languages")
 
 [node name="VBoxContainer" type="GridContainer" parent="TabContainer/SETTINGS/CenterContainer"]
 margin_left = 371.0
 margin_right = 604.0
 margin_bottom = 20.0
 columns = 2
-script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-focus_node_path = NodePath("Languages")
 
 [node name="Label" type="Label" parent="TabContainer/SETTINGS/CenterContainer/VBoxContainer"]
 margin_top = 3.0
@@ -90,4 +91,19 @@ margin_bottom = -4.0
 script = ExtResource( 3 )
 text = "INPUTS"
 
+[node name="CenterContainer" type="CenterContainer" parent="TabContainer/INPUTS"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" parent="TabContainer/INPUTS/CenterContainer" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 338.0
+margin_bottom = 50.0
+
+[connection signal="tab_changed" from="TabContainer" to="." method="_on_TabContainer_tab_changed"]
 [connection signal="item_selected" from="TabContainer/SETTINGS/CenterContainer/VBoxContainer/Languages" to="." method="_on_Languages_item_selected"]

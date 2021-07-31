@@ -6,9 +6,9 @@ export var focus_node_path: NodePath
 onready var focus_node := get_node(focus_node_path) if focus_node_path else null
 
 func _ready():
-	_focus_node()
+	focus()
 
-func _focus_node():
+func focus():
 	if focus_node:
 		focus_node.grab_focus()
 	else:
