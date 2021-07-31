@@ -53,7 +53,7 @@ func _set_input(i: PlayerInput) -> void:
 
 func _set_ready(value: bool) -> void:
 	ready = value
-	ready_label.text = "READY" if ready else ""
+	ready_label.text = tr("READY") if ready else ""
 
 
 func set_number(num: int) -> void:

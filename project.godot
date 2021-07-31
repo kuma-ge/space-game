@@ -139,6 +139,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gut/custom/SceneTest.gd"
 }, {
+"base": "Node",
+"class": "SelectOption",
+"language": "GDScript",
+"path": "res://addons/shared/misc/SelectOption.gd"
+}, {
 "base": "Node2D",
 "class": "Spawner",
 "language": "GDScript",
@@ -206,6 +211,7 @@ _global_script_class_icons={
 "Random": "",
 "RandomMove": "",
 "SceneTest": "",
+"SelectOption": "",
 "Spawner": "",
 "Stack": "",
 "State": "",
@@ -293,6 +299,11 @@ menu={
 2d_physics/layer_2="player"
 2d_physics/layer_3="player_hurtbox"
 2d_physics/layer_4="enemy_hurtbox"
+
+[locale]
+
+translations=PoolStringArray( "res://i18n/de.po", "res://i18n/en.po" )
+locale_filter=[ 0, [  ] ]
 
 [physics]
 

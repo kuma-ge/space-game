@@ -19,34 +19,34 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 451.0
+margin_left = 445.0
 margin_top = 269.0
-margin_right = 572.0
+margin_right = 578.0
 margin_bottom = 331.0
 alignment = 1
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 121.0
+margin_right = 133.0
 margin_bottom = 14.0
-text = "Select Game Mode"
+text = "SELECT_GAME_MODE"
 
 [node name="GridContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
 margin_top = 18.0
-margin_right = 121.0
+margin_right = 133.0
 margin_bottom = 62.0
 script = ExtResource( 2 )
 
-[node name="Deathmatch" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
-margin_right = 121.0
+[node name="Race" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+margin_right = 133.0
 margin_bottom = 20.0
+text = "RACE"
+
+[node name="Deathmatch" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+margin_top = 24.0
+margin_right = 133.0
+margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "DEATHMATCH"
 
-[node name="Race" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
-margin_top = 24.0
-margin_right = 121.0
-margin_bottom = 44.0
-text = "RACE"
-
-[connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Deathmatch" to="." method="_on_Deathmatch_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Race" to="." method="_on_Race_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Deathmatch" to="." method="_on_Deathmatch_pressed"]

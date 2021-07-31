@@ -1,10 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/menu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://addons/shared/menu/Menu.gd" type="Script" id=2]
-[ext_resource path="res://addons/shared/utils/datatypes/Stack.gd" type="Script" id=3]
 
-[node name="MainMenu" type="MarginContainer"]
+[node name="MainMenu" type="CenterContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -12,31 +11,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MenuStack" type="Node" parent="."]
-script = ExtResource( 3 )
-
-[node name="Main" type="CenterContainer" parent="."]
-visible = false
-margin_right = 1024.0
-margin_bottom = 600.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Main"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 465.0
 margin_top = 266.0
 margin_right = 559.0
 margin_bottom = 334.0
 script = ExtResource( 2 )
 
-[node name="Start" type="Button" parent="Main/VBoxContainer"]
+[node name="Start" type="Button" parent="VBoxContainer"]
 margin_right = 94.0
 margin_bottom = 20.0
 text = "START_GAME"
 
-[node name="Options" type="Button" parent="Main/VBoxContainer"]
-visible = false
+[node name="Options" type="Button" parent="VBoxContainer"]
 margin_top = 24.0
 margin_right = 94.0
 margin_bottom = 44.0
@@ -45,7 +32,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Exit" type="Button" parent="Main/VBoxContainer"]
+[node name="Exit" type="Button" parent="VBoxContainer"]
 margin_top = 48.0
 margin_right = 94.0
 margin_bottom = 68.0
@@ -54,38 +41,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Options" type="MarginContainer" parent="."]
-visible = false
-margin_right = 1024.0
-margin_bottom = 600.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TabContainer" type="TabContainer" parent="Options"]
-margin_right = 1024.0
-margin_bottom = 600.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SETTINGS" type="Tabs" parent="Options/TabContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
-
-[node name="INPUTS" type="Tabs" parent="Options/TabContainer"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
-
-[connection signal="pressed" from="Main/VBoxContainer/Start" to="." method="_on_Start_pressed"]
-[connection signal="pressed" from="Main/VBoxContainer/Options" to="." method="_on_Options_pressed"]
-[connection signal="pressed" from="Main/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
