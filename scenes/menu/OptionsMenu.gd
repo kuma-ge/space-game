@@ -1,6 +1,6 @@
 extends MarginContainer
 
-onready var languages := $TabContainer/SETTINGS/VBoxContainer/Languages
+onready var languages := $TabContainer/SETTINGS/CenterContainer/VBoxContainer/Languages
 
 
 func _ready():

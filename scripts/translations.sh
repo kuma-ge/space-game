@@ -5,8 +5,7 @@ mkdir -p i18n
 pybabel extract -F babelrc -k text -k LineEdit/placeholder_text -k tr --no-location -o i18n/messages.pot \
     scenes \
     maps \
-    player \
-    addons/shared
+    player
 
 cd i18n
 
@@ -20,5 +19,4 @@ for LANG in "${LANGS[@]}"; do
     msgfmt $LANG.po --check
 
     msgcmp $LANG.po $LANG.po
-    # echo $str1 | grep -o "msgstr \"\"\n\n" | wc -l
 done
