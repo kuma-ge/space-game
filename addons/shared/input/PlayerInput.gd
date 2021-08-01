@@ -6,13 +6,13 @@ Input Reader for a single player
 
 class_name PlayerInput
 
-var joypad_input = false
+var joypad = false
 var device_id = 0
 
 
 func _init(device = 0, joypad = false):
 	self.device_id = device
-	self.joypad_input = joypad
+	self.joypad = joypad
 
 
 func _unhandled_input(event):
@@ -21,11 +21,11 @@ func _unhandled_input(event):
 
 func set_for_event(event: InputEvent) -> void:
 	device_id = event.device
-	joypad_input = is_joypad_event(event)
+	joypad = is_joypad_event(event)
 
 
 func is_player_event(event: InputEvent) -> bool:
-	return joypad_input == is_joypad_event(event) and device_id == event.device
+	return joypad == is_joypad_event(event) and device_id == event.device
 
 
 static func is_joypad_event(event: InputEvent) -> bool:
@@ -33,7 +33,7 @@ static func is_joypad_event(event: InputEvent) -> bool:
 
 
 func get_unique_name() -> String:
-	return str(get_network_master()) + ":" + str(device_id) + ":" + str(joypad_input)
+	return str(get_network_master()) + ":" + str(device_id) + ":" + str(joypad)
 
 
 func handle_input(event: InputEvent) -> void:

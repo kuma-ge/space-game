@@ -42,6 +42,7 @@ func show_pause_menu():
 
 func _game_started(mode) -> void:
 	open_menu(Screen.InGame)
+	stack.clear()
 
 
 func _game_ended(player_won) -> void:

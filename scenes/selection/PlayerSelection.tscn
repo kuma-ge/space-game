@@ -35,5 +35,4 @@ margin_right = 1024.0
 margin_bottom = 600.0
 disabled = true
 text = "START_GAME"
-
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_Start_pressed"]

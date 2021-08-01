@@ -57,5 +57,5 @@ func _set_ready(value: bool) -> void:
 
 
 func set_number(num: int) -> void:
-	var file = get_script().get_path().get_base_dir() + "/gamepad" + str(num) + ".png"
+	var file = Utils.get_script_path(self) + "gamepad" + str(num) + ".png"
 	$VBoxContainer/TextureRect.texture = load(file)

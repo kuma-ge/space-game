@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-07-30 21:02+0200\n"
+"POT-Creation-Date: 2021-08-01 11:46+0200\n"
 "PO-Revision-Date: 2021-07-30 11:18+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -56,6 +56,27 @@ msgstr "English"
 
 msgid "INPUTS"
 msgstr "Inputs"
+
+msgid "INPUT_MOVE_UP"
+msgstr "Forward"
+
+msgid "INPUT_MOVE_DOWN"
+msgstr "Backward"
+
+msgid "INPUT_MOVE_LEFT"
+msgstr "Turn left"
+
+msgid "INPUT_MOVE_RIGHT"
+msgstr "Turn right"
+
+msgid "INPUT_FIRE"
+msgstr "Fire"
+
+msgid "INPUT_BOOST"
+msgstr "Boost"
+
+msgid "PRESS_ANY_BUTTON"
+msgstr "Press any button"
 
 msgid "RESUME_GAME"
 msgstr "Resume game"
