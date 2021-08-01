@@ -29,6 +29,7 @@ __meta__ = {
 }
 
 [node name="SETTINGS" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -81,19 +82,19 @@ script = ExtResource( 2 )
 text = "LANG_EN_US"
 
 [node name="INPUTS" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
 margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
+mouse_filter = 1
 script = ExtResource( 3 )
 text = "INPUTS"
 
 [node name="CenterContainer" type="CenterContainer" parent="TabContainer/INPUTS"]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+margin_bottom = 54.0
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -102,8 +103,10 @@ __meta__ = {
 [node name="GridContainer" parent="TabContainer/INPUTS/CenterContainer" instance=ExtResource( 6 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 338.0
-margin_bottom = 50.0
+margin_left = 319.0
+margin_top = 2.0
+margin_right = 657.0
+margin_bottom = 52.0
 
 [connection signal="tab_changed" from="TabContainer" to="." method="_on_TabContainer_tab_changed"]
 [connection signal="item_selected" from="TabContainer/SETTINGS/CenterContainer/VBoxContainer/Languages" to="." method="_on_Languages_item_selected"]

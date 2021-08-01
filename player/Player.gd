@@ -3,7 +3,7 @@ extends KinematicBody2D
 
 signal died
 
-export var speed_max := 675.0
+export var speed_max := 350.0
 export var acceleration := 1500.0
 export var angular_speed_max := deg2rad(150)
 export var angular_acceleration := deg2rad(1200)

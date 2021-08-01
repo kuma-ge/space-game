@@ -4,19 +4,18 @@
 [ext_resource path="res://scenes/menu/input/arrowDown.png" type="Texture" id=2]
 [ext_resource path="res://scenes/menu/input/joystickL_top.png" type="Texture" id=3]
 
-[node name="InputButton" type="ToolButton"]
+[node name="InputButton" type="TextureButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-input = "move_left"
-joypad = true
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -61,3 +60,5 @@ stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="pressed" from="." to="." method="_on_InputButton_pressed"]
